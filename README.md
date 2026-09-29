@@ -25,17 +25,4 @@ Frontend: Angular, TypeScript
 Backend: ASP.NET Core Web API
 Database: SQL Server (ADO.NET)
 
-▶️ How to Run
-Frontend
-npm install
-ng serve -o
 
-Backend
-
-Update appsettings.json with SQL connection string
-
-Run the API project in Visual Studio
-
-📌 Purpose
-
-A beginner-friendly project to practice full-stack development, API communication, database CRUD operations, and clean code structure.
