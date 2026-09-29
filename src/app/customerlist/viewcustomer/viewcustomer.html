@@ -1,0 +1,31 @@
+<p>viewcustomer works!</p>
+
+
+<div class="row">
+    <div clas="col-12">
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>sr no</th>
+                    <th>Name</th>
+                    <th>email</th>
+                    <th>action</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let cust of customerList;let sr=index">
+                    <td>{{sr+1}}</td>
+                    <td>{{cust.name}}</td>
+                    <td>{{cust.mobile}}</td>
+                      <td>{{cust.email}}</td>
+                      <td>
+                       <button [routerLink]="['/viewcustomer', + cust.id]" class="btn btn-primary btn-sm">  View </button>
+                          <button (click)=" navigatetoedit(cust.id)" class="btn btn-success">edit</button>
+                            <button class="btn btn-danger">delete</button>
+                      </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+</div>

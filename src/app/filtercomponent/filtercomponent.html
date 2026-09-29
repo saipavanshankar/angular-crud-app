@@ -1,0 +1,13 @@
+<p>Filter Component Works!</p>
+
+<input
+  type="text"
+  [(ngModel)]="searchTerm"
+  (input)="onInputChange()"
+  placeholder="Search here..."
+  class="form-control"
+/>
+
+<ul>
+  <li *ngFor="let item of filteredItems">{{ item | uppercase }}</li>
+</ul>

@@ -1,0 +1,138 @@
+<div class="container mt-4">
+  <h2 class="mb-4">Student Data</h2>
+
+  <!-- ✅ Added "Add Student" Button that opens the popup modal -->
+  <button
+    class="btn btn-primary mb-3"
+    (click)="openAddModal()"
+    data-bs-toggle="modal"
+    data-bs-target="#studentModal">
+    Add Student
+  </button>
+
+  <!-- ✅ Student Table remains same -->
+  <table class="table table-bordered table-striped">
+    <thead class="table-dark">
+      <tr>
+        <th>Student ID</th>
+        <th>Name</th>
+        <th>Age</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let item of studentslist; let i = index">
+        <td>{{ item.studentId }}</td>
+        <td>{{ item.name }}</td>
+        <td>{{ item.age }}</td>
+        <td>
+          <!-- ✅ Modified Edit button to open modal instead of inline edit -->
+          <button
+            class="btn btn-sm btn-warning me-2"
+            (click)="Onedit(item)"
+            data-bs-toggle="modal"
+            data-bs-target="#studentModal">
+            Edit
+          </button>
+
+          <button
+            class="btn btn-sm btn-danger"
+            (click)="Ondelete(item.studentId)">
+            Delete
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <!-- ✅ Added Bootstrap Modal for Add/Edit Student -->
+  <div
+    class="modal fade"
+    id="studentModal"
+    tabindex="-1"
+    aria-labelledby="studentModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <!-- ✅ Dynamic modal title based on mode -->
+          <h5 class="modal-title" id="studentModalLabel">
+            {{ isEditMode ? 'Edit Student' : 'Add Student' }}
+          </h5>
+          <button
+            type="button"
+            class="btn-close"
+            data-bs-dismiss="modal"
+            aria-label="Close"></button>
+        </div>
+
+        <div class="modal-body">
+          <!-- ✅ Moved your form inside modal -->
+          <form>
+            <div class="mb-3">
+              <label for="studentId" class="form-label">Student ID</label>
+              <input
+                type="number"
+                name="studentId"
+                [(ngModel)]="studentObj.studentId"
+                class="form-control"
+                id="studentId"
+                placeholder="Enter Student ID"
+                [readonly]="isEditMode" />
+              <!-- ✅ ID is readonly when editing -->
+            </div>
+
+            <div class="mb-3">
+              <label for="name" class="form-label">Name</label>
+              <input
+                type="text"
+                name="name"
+                [(ngModel)]="studentObj.name"
+                class="form-control"
+                id="name"
+                placeholder="Enter Name" />
+            </div>
+
+            <div class="mb-3">
+              <label for="age" class="form-label">Age</label>
+              <input
+                type="number"
+                name="age"
+                [(ngModel)]="studentObj.age"
+                class="form-control"
+                id="age"
+                placeholder="Enter Age" />
+            </div>
+          </form>
+        </div>
+
+        <div class="modal-footer">
+          <!-- ✅ Added Close + Add/Update buttons inside modal footer -->
+          <button
+            type="button"
+            class="btn btn-secondary"
+            data-bs-dismiss="modal"
+            (click)="onclose()">
+            Close 
+          </button>
+
+          <button
+            *ngIf="!isEditMode"
+            type="button"
+            (click)="onSave()"
+            class="btn btn-primary">
+            Add Student
+          </button>
+
+          <button
+            *ngIf="isEditMode"
+            type="button"
+            (click)="updateStudent()"
+            class="btn btn-success">
+            Update Student
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

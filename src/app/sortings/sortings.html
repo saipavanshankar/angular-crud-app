@@ -1,0 +1,26 @@
+<p>sortings works!</p>
+
+<div>
+    <button (click)="sortbyname()" class="btn btn-success" >byname</button>
+    <button (click)="sortbyage()"class="btn btn-danger">byage</button>
+
+</div>
+
+  <div class="text-center mb-3">
+    <button class="btn btn-primary me-2" (click)="toggleSortByName()">
+      Sort by Name
+    </button>
+   
+  </div>
+<ul>
+  <li *ngFor="let s of students">{{ s.name }} - {{ s.age }}</li>
+</ul>
+
+<!-- <div>
+  <h1>the product list</h1>
+ <ul>
+  <li *ngFor="let product of productlist">{{product.name}}</li>
+ </ul>
+</div> -->
+
+
